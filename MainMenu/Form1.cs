@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DatabaseApp;
 
 namespace MainMenu
 {
@@ -19,7 +20,7 @@ namespace MainMenu
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            DatabaseApp.Program.LinkDatabase();
         }
     }
 }
