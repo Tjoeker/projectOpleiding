@@ -9,7 +9,7 @@ namespace DatabaseApp.DataTables
     public class DocentenOpleidingen
     {
         public int Id { get; set; }
-        public int DocentId { get; set; }
-        public int OplidingId { get; set; }
+        public Docenten Docenten { get; set; }
+        public OpleidingsInformatie Opleiding { get; set; }
     }
 }

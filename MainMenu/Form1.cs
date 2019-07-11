@@ -11,9 +11,9 @@ using DatabaseApp;
 
 namespace MainMenu
 {
-    public partial class Form1 : Form
+    public partial class MainMenu : Form
     {
-        public Form1()
+        public MainMenu()
         {
             InitializeComponent();
         }
@@ -21,6 +21,11 @@ namespace MainMenu
         private void Form1_Load(object sender, EventArgs e)
         {
             DatabaseApp.Program.LinkDatabase();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

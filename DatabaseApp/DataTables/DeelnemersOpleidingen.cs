@@ -9,9 +9,7 @@ namespace DatabaseApp.DataTables
     public class DeelnemersOpleidingen
     {
         public int Id { get; set; }
-        public string Naam { get; set; }
-        public DateTime GeboorteDatum { get; set; }
-        public string Woonplaats { get; set; }
-        public string BadgeNummer { get; set; }
-    }
+        public Deelnemers Deelnemers { get; set; }
+        public OpleidingsInformatie Opleiding { get; set; }
+}
 }
