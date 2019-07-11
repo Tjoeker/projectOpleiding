@@ -8,14 +8,10 @@ namespace DatabaseApp
 {
     public static class Program
     {
-        static void Main(string[] args)
-        {
-
-        }
 
         public static void LinkDatabase()
         {
-            using (var context = new DatabaseCotext())
+            using (var context = new DatabaseContext())
             {
                 var lijst = context.Docenten.Select(a=> a.Naam);
             }

@@ -8,9 +8,9 @@ using DatabaseApp.DataTables;
 
 namespace DatabaseApp
 {
-    class DatabaseCotext : DbContext
+    public class DatabaseContext : DbContext
     {
-        public DatabaseCotext() : base("OpleidingDatabase")
+        public DatabaseContext() : base("OpleidingDatabase")
         {
 
         }

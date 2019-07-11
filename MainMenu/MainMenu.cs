@@ -23,9 +23,10 @@ namespace MainMenu
             DatabaseApp.Program.LinkDatabase();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void ButtonManage_Click(object sender, EventArgs e)
         {
-
+            var context = new ManageMain();
+            context.Show();
         }
     }
 }

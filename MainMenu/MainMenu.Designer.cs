@@ -28,46 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.ButtonBadge = new System.Windows.Forms.Button();
+            this.ButtonManage = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // ButtonBadge
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ButtonBadge.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(6, 6);
-            this.button1.Margin = new System.Windows.Forms.Padding(6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 92);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Badge";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.ButtonBadge.Location = new System.Drawing.Point(6, 6);
+            this.ButtonBadge.Margin = new System.Windows.Forms.Padding(6);
+            this.ButtonBadge.Name = "ButtonBadge";
+            this.ButtonBadge.Size = new System.Drawing.Size(130, 92);
+            this.ButtonBadge.TabIndex = 0;
+            this.ButtonBadge.Text = "Badge";
+            this.ButtonBadge.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // ButtonManage
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ButtonManage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(148, 6);
-            this.button2.Margin = new System.Windows.Forms.Padding(6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 92);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Manage";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ButtonManage.Location = new System.Drawing.Point(148, 6);
+            this.ButtonManage.Margin = new System.Windows.Forms.Padding(6);
+            this.ButtonManage.Name = "ButtonManage";
+            this.ButtonManage.Size = new System.Drawing.Size(130, 92);
+            this.ButtonManage.TabIndex = 1;
+            this.ButtonManage.Text = "Manage";
+            this.ButtonManage.UseVisualStyleBackColor = true;
+            this.ButtonManage.Click += new System.EventHandler(this.ButtonManage_Click);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ButtonBadge, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ButtonManage, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 15);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -92,8 +92,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button ButtonBadge;
+        private System.Windows.Forms.Button ButtonManage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
