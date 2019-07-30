@@ -14,10 +14,12 @@ namespace DatabaseApp.DataTables
         public string Contactpersoon { get; set; }
         public string Opleidingsplaats { get; set; }
         public string ReferentieOpleidingsplaats { get; set; }
-        public int OeNummer { get; set; }
-        public int Opleidingscode { get; set; }
+        public string OeNummer { get; set; }
+        public string Opleidingscode { get; set; }
         public DateTime StartDatum { get; set; }
         public DateTime EindDatum { get; set; }
+        public List<Docenten> Docentens { get; set; }
+        public List<Deelnemers> Deelnemers { get; set; }
 
         public override string ToString()
         {

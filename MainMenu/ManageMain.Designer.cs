@@ -176,6 +176,7 @@
             this.ButtonOpleidingenRemove.TabIndex = 32;
             this.ButtonOpleidingenRemove.Text = "Verwijder";
             this.ButtonOpleidingenRemove.UseVisualStyleBackColor = true;
+            this.ButtonOpleidingenRemove.Click += new System.EventHandler(this.ButtonOpleidingenRemove_Click);
             // 
             // ButtonOpleidingenModify
             // 
@@ -186,6 +187,7 @@
             this.ButtonOpleidingenModify.TabIndex = 31;
             this.ButtonOpleidingenModify.Text = "Wijzig";
             this.ButtonOpleidingenModify.UseVisualStyleBackColor = true;
+            this.ButtonOpleidingenModify.Click += new System.EventHandler(this.ButtonOpleidingenModify_Click);
             // 
             // ButtonOpleidingenAdd
             // 
@@ -196,6 +198,7 @@
             this.ButtonOpleidingenAdd.TabIndex = 30;
             this.ButtonOpleidingenAdd.Text = "Voeg Toe";
             this.ButtonOpleidingenAdd.UseVisualStyleBackColor = true;
+            this.ButtonOpleidingenAdd.Click += new System.EventHandler(this.ButtonOpleidingenAdd_Click);
             // 
             // ButtonOpleidingenTijdsRegistraties
             // 
@@ -307,6 +310,7 @@
             this.ListboxOpleidingen.Name = "ListboxOpleidingen";
             this.ListboxOpleidingen.Size = new System.Drawing.Size(457, 676);
             this.ListboxOpleidingen.TabIndex = 19;
+            this.ListboxOpleidingen.DoubleClick += new System.EventHandler(this.ListboxOpleidingen_DoubleClick);
             // 
             // LabelOpleidingenTot
             // 
@@ -575,6 +579,7 @@
             this.ButtonDocentenOpleidingenAdd.TabIndex = 27;
             this.ButtonDocentenOpleidingenAdd.Text = "Voeg Toe";
             this.ButtonDocentenOpleidingenAdd.UseVisualStyleBackColor = true;
+            this.ButtonDocentenOpleidingenAdd.Click += new System.EventHandler(this.ButtonDocentenOpleidingenAdd_Click);
             // 
             // ListboxDocentenOpleidingen
             // 
@@ -901,6 +906,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ManageMain";
             this.Text = "ManageMain";
+            this.Load += new System.EventHandler(this.ManageMain_Load);
             this.Tabs.ResumeLayout(false);
             this.TabOpleidingen.ResumeLayout(false);
             this.TabOpleidingen.PerformLayout();

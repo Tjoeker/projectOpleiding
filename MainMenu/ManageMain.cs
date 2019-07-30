@@ -30,6 +30,10 @@ namespace MainMenu
             else if (Tabs.SelectedTab.Text == "Opleidingen")
                 ReloadOpleidingList();
         }
+        private void ManageMain_Load(object sender, EventArgs e)
+        {
+            ReloadOpleidingList();
+        }
 
         #region Docenten
 
@@ -152,6 +156,11 @@ namespace MainMenu
             }
 
             ReloadDocentList();
+        }
+
+        private void ButtonDocentenOpleidingenAdd_Click(object sender, EventArgs e)
+        {
+
         }
 
         #endregion
@@ -351,7 +360,145 @@ namespace MainMenu
             ListboxOpleidingenDocenten.Items.Clear();
 
         }
+
+        private void ButtonOpleidingenAdd_Click(object sender, EventArgs e)
+        {
+            List<Docenten> docenten = new List<Docenten>();
+
+            foreach (var docent in ListboxOpleidingenDocenten.Items)
+            {
+                docenten.Add(docent as Docenten);
+            }
+
+            List<Deelnemers> deelnemers = new List<Deelnemers>();
+
+            foreach (var deelnemer in ListboxOpleidingenDeelnemers.Items)
+            {
+                deelnemers.Add(deelnemer as Deelnemers);
+            }
+
+            OpleidingsInformatie opleiding = new OpleidingsInformatie()
+            {
+                Opleidingsinstelling = TextboxOpleidingenInstelling.Text,
+                Opleiding = TextboxOpleidingenNaam.Text,
+                Contactpersoon = TextboxOpleidingenContactPersoon.Text,
+                Opleidingsplaats = TextboxOpleidingenPlaats.Text,
+                ReferentieOpleidingsplaats = TextboxOpleidingenReferentie.Text,
+                OeNummer = TextboxOpleidingenOENr.Text,
+                Opleidingscode = TextboxOpleidingenCode.Text,
+                StartDatum = DateTimePickerOpleidingenVan.Value,
+                EindDatum = DateTimePickerOpleidingenTot.Value,
+                Docentens = docenten,
+                Deelnemers = deelnemers
+
+            };
+
+            using (var context = new DatabaseContext())
+            {
+                context.OpleidingsInformatie.Add(opleiding);
+                context.SaveChanges();
+            }
+
+            ReloadOpleidingList();
+        }
+        private void ListboxOpleidingen_DoubleClick(object sender, EventArgs e)
+        {
+            string selectedItem = ListboxOpleidingen.SelectedItem.ToString();
+            var strings = selectedItem.Split(',');
+            string naam = strings[0];
+            string plaats = strings[1].Substring(2);
+            string startdatum = strings[2].Substring(2);
+
+            using (var context = new DatabaseContext())
+            {
+                OpleidingsInformatie opleiding = context.OpleidingsInformatie.FirstOrDefault(f => f.Opleiding == naam && f.Opleidingsplaats == plaats);
+                _selectedOpleiding = opleiding;
+
+
+                TextboxOpleidingenInstelling.Text = opleiding.Opleidingsinstelling;
+                TextboxOpleidingenNaam.Text = opleiding.Opleiding;
+                TextboxOpleidingenContactPersoon.Text = opleiding.Contactpersoon;
+                TextboxOpleidingenPlaats.Text = opleiding.Opleidingsplaats;
+                TextboxOpleidingenReferentie.Text = opleiding.ReferentieOpleidingsplaats;
+                TextboxOpleidingenOENr.Text = opleiding.OeNummer;
+                TextboxOpleidingenCode.Text = opleiding.Opleidingscode;
+                DateTimePickerOpleidingenVan.Value = opleiding.StartDatum;
+                DateTimePickerOpleidingenTot.Value = opleiding.EindDatum;
+                if (opleiding.Deelnemers != null)
+                    foreach (var item in opleiding.Deelnemers)
+                    {
+                        ListboxOpleidingenDeelnemers.Items.Add(item);
+                    }
+                if (opleiding.Docentens != null)
+                    foreach (var item in opleiding.Docentens)
+                    {
+                        ListboxOpleidingenDocenten.Items.Add(item);
+                    }
+            }
+        }
+        private void ButtonOpleidingenRemove_Click(object sender, EventArgs e)
+        {
+            using (var context = new DatabaseContext())
+            {
+                OpleidingsInformatie opleiding = context.OpleidingsInformatie.FirstOrDefault(f => f.Opleiding == TextboxOpleidingenNaam.Text && f.Opleidingsplaats == TextboxOpleidingenPlaats.Text);
+
+                if (opleiding != null)
+                {
+                    context.OpleidingsInformatie.Remove(opleiding);
+                    context.SaveChanges();
+                }
+            }
+
+            ReloadOpleidingList();
+        }
+        private void ButtonOpleidingenModify_Click(object sender, EventArgs e)
+        {
+            List<Docenten> docenten = new List<Docenten>();
+
+            foreach (var docent in ListboxOpleidingenDocenten.Items)
+            {
+                docenten.Add(docent as Docenten);
+            }
+
+            List<Deelnemers> deelnemers = new List<Deelnemers>();
+
+            foreach (var deelnemer in ListboxOpleidingenDeelnemers.Items)
+            {
+                deelnemers.Add(deelnemer as Deelnemers);
+            }
+
+            using (var context = new DatabaseContext())
+            {
+                var row = context.OpleidingsInformatie.FirstOrDefault(f => _selectedOpleiding.Opleiding == f.Opleiding && _selectedOpleiding.Opleidingsplaats == f.Opleidingsplaats);
+
+                if (row != null)
+                {
+                    row.Opleiding = TextboxOpleidingenNaam.Text;
+                    row.Opleidingsinstelling = TextboxOpleidingenInstelling.Text;
+                    row.Contactpersoon = TextboxOpleidingenContactPersoon.Text;
+                    row.Opleidingsplaats = TextboxOpleidingenPlaats.Text;
+                    row.ReferentieOpleidingsplaats = TextboxOpleidingenReferentie.Text;
+                    row.OeNummer = TextboxOpleidingenOENr.Text;
+                    row.Opleidingscode = TextboxOpleidingenCode.Text;
+                    row.StartDatum = DateTimePickerOpleidingenVan.Value;
+                    row.EindDatum = DateTimePickerOpleidingenTot.Value;
+                    if (row.Docentens != null)
+                        row.Docentens.Clear();
+                    row.Docentens = docenten;
+                    if (row.Deelnemers != null)
+                        row.Deelnemers.Clear();
+                    row.Deelnemers = deelnemers;
+                }
+
+                context.SaveChanges();
+            }
+
+            ReloadOpleidingList();
+        }
+
+
         #endregion
 
+        
     }
 }
