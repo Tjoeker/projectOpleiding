@@ -18,8 +18,8 @@ namespace DatabaseApp.DataTables
         public string Opleidingscode { get; set; }
         public DateTime StartDatum { get; set; }
         public DateTime EindDatum { get; set; }
-        public List<Docenten> Docentens { get; set; }
-        public List<Deelnemers> Deelnemers { get; set; }
+        public virtual List<Docenten> Docentens { get; set; }
+        public virtual List<Deelnemers> Deelnemers { get; set; }
 
         public override string ToString()
         {

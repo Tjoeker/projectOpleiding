@@ -62,6 +62,7 @@ namespace MainMenu
 
             TextboxDocentenNaam.Clear();
             TextboxDocentenBedrijf.Clear();
+            ListboxDocentenOpleidingen.Items.Clear();
         }
 
         private void ButtonDocentenAdd_Click(object sender, EventArgs e)
@@ -93,25 +94,29 @@ namespace MainMenu
 
         private void ListboxDocenten_DoubleClick(object sender, EventArgs e)
         {
-            string selectedItem = ListboxDocenten.SelectedItem.ToString();
-            int commaIndex = selectedItem.IndexOf(',');
-            string naam = selectedItem.Substring(0,commaIndex);
-            string bedrijf = selectedItem.Substring(commaIndex + 3);
-
-            using(var context = new DatabaseContext())
+            try
             {
-                Docenten docent = context.Docenten.FirstOrDefault(f => f.Naam == naam && f.Bedijf == bedrijf);
-                _selectedDocent = docent;
+                string selectedItem = ListboxDocenten.SelectedItem.ToString();
+                int commaIndex = selectedItem.IndexOf(',');
+                string naam = selectedItem.Substring(0, commaIndex);
+                string bedrijf = selectedItem.Substring(commaIndex + 3);
+
+                using (var context = new DatabaseContext())
+                {
+                    Docenten docent = context.Docenten.FirstOrDefault(f => f.Naam == naam && f.Bedijf == bedrijf);
+                    _selectedDocent = docent;
 
 
-                TextboxDocentenNaam.Text = docent.Naam;
-                TextboxDocentenBedrijf.Text = docent.Bedijf;
-                if (docent.Opleidings != null)
-                    foreach (var item in docent.Opleidings)
-                    {
-                        ListboxDocentenOpleidingen.Items.Add(item);
-                    }
+                    TextboxDocentenNaam.Text = docent.Naam;
+                    TextboxDocentenBedrijf.Text = docent.Bedijf;
+                    if (docent.Opleidings != null)
+                        foreach (var item in docent.Opleidings)
+                        {
+                            ListboxDocentenOpleidingen.Items.Add(item);
+                        }
+                }
             }
+            catch { }
         }
 
         private void ButtonDocentenRemove_Click(object sender, EventArgs e)
@@ -160,7 +165,17 @@ namespace MainMenu
 
         private void ButtonDocentenOpleidingenAdd_Click(object sender, EventArgs e)
         {
+            var form = new Link.AddOpleiding();
+            form.Show();
 
+            form.OnOkEvent += OnAddOpleidingEvent;
+
+            
+        }
+
+        private void OnAddOpleidingEvent(object sender, OpleidingsInformatie e)
+        {
+            ListboxDocentenOpleidingen.Items.Add(e);
         }
 
         #endregion

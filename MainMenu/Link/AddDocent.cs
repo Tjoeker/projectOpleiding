@@ -8,29 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DatabaseApp;
+using DatabaseApp.DataTables;
 
-namespace MainMenu
+namespace MainMenu.Link
 {
-    public partial class DeelnemersForm : Form
+    public partial class AddDocent : Form
     {
-        public DeelnemersForm()
+        public AddDocent()
         {
             InitializeComponent();
         }
 
-        private void ButtonCreate_Click(object sender, EventArgs e)
-        {
-            var form = new CreateNewDeelnemer();
-            form.Show();
-        }
-
-        private void DeelnemersForm_Activated(object sender, EventArgs e)
+        private void AddDocent_Activated(object sender, EventArgs e)
         {
             using (var context = new DatabaseContext())
             {
-                foreach (var item in context.Deelnemers)
+                foreach(var item in context.Docenten)
                 {
-                    DeelnemerLijst.Items.Add(item);
+                    ComboboxDocenten.Items.Add(item);
                 }
             }
         }

@@ -50,9 +50,7 @@
   <ItemGroup>
     <Compile Include="DatabaseCotext.cs" />
     <Compile Include="DataTables\Deelnemers.cs" />
-    <Compile Include="DataTables\DeelnemersOpleidingen.cs" />
     <Compile Include="DataTables\Docenten.cs" />
-    <Compile Include="DataTables\DocentenOpleidingen.cs" />
     <Compile Include="DataTables\NietOpleidingsDagen.cs" />
     <Compile Include="DataTables\OpleidingsInformatie.cs" />
     <Compile Include="DataTables\Tijdsregistraties.cs" />

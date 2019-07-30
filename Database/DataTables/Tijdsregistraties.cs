@@ -10,7 +10,7 @@ namespace DatabaseApp.DataTables
     {
         public int Id { get; set; }
         public DateTime DateTime { get; set; }
-        public OpleidingsInformatie Opleiding { get; set; }
-        public Deelnemers Deelnemers { get; set; }
+        public virtual OpleidingsInformatie Opleiding { get; set; }
+        public virtual Deelnemers Deelnemers { get; set; }
     }
 }

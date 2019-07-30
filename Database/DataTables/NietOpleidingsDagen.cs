@@ -12,6 +12,6 @@ namespace DatabaseApp.DataTables
         public DateTime Datum { get; set; }
         public bool Voormiddag { get; set; }
         public bool Namiddag { get; set; }
-        public OpleidingsInformatie Opleiding { get; set; }
+        public virtual OpleidingsInformatie Opleiding { get; set; }
     }
 }

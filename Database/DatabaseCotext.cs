@@ -16,12 +16,9 @@ namespace DatabaseApp
         }
 
         public DbSet<Deelnemers> Deelnemers { get; set; }
-
-        public DbSet<DeelnemersOpleidingen> DeelnemersOpleidingen { get; set; }
         public DbSet<Tijdsregistraties> Tijdsregistraties { get; set; }
         public DbSet<OpleidingsInformatie> OpleidingsInformatie { get; set; }
         public DbSet<NietOpleidingsDagen> NietOpleidingsDagen { get; set; }
-        public DbSet<DocentenOpleidingen> DocentenOpleidingen { get; set; }
         public DbSet<Docenten> Docenten { get; set; }
     }
 }
