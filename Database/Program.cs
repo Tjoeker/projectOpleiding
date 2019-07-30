@@ -13,7 +13,7 @@ namespace DatabaseApp
         {
             using (var context = new DatabaseContext())
             {
-                var lijst = context.Docenten.Select(a=> a.Naam);
+                var lijst = context.Docenten.FirstOrDefault(a=> a.Id == 0);
             }
         }
     }

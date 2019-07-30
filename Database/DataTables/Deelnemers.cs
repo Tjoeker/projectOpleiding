@@ -13,11 +13,12 @@ namespace DatabaseApp.DataTables
         public DateTime GeboorteDatum { get; set; }
         public string Woonplaats { get; set; }
         public string BadgeNummer { get; set; }
+        public List<OpleidingsInformatie> Opleidings { get; set; }
         public override string ToString()
         {
             using(var context = new DatabaseContext())
             {
-                return Naam + ", " + Woonplaats + ", " + GeboorteDatum.ToShortDateString();
+                return Naam + ",  " + Woonplaats + ",  " + GeboorteDatum.ToShortDateString();
             }
         }
     }

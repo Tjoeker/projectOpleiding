@@ -18,5 +18,10 @@ namespace DatabaseApp.DataTables
         public int Opleidingscode { get; set; }
         public DateTime StartDatum { get; set; }
         public DateTime EindDatum { get; set; }
+
+        public override string ToString()
+        {
+            return Opleiding + ",  " + Opleidingsplaats + ",  " + StartDatum.ToShortDateString();
+        }
     }
 }
